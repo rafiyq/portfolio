@@ -20,22 +20,22 @@
   };
 
   # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
-  idx.extensions = [
-    "rust-lang.rust-analyzer"
-    "tamasfe.even-better-toml"
-    "fill-labs.dependi"
-    "vadimcn.vscode-lldb"
-    "bradlc.vscode-tailwindcss"
-  ];
+  idx = {
+    extensions = [
+      "rust-lang.rust-analyzer"
+      "tamasfe.even-better-toml"
+      "fill-labs.dependi"
+      "vadimcn.vscode-lldb"
+      "bradlc.vscode-tailwindcss"
+    ];
 
-  # Commands to execute when the workspace is created and opened for the first time.
-  idx.workspace.onCreate = {
-    rust-install = "rustup default nightly; rustup target add wasm32-unknown-unknown";
-    npm-update = "npm install -g npm@latest";
-    wrangler-install = "npm install -g wrangler@latest";
-    # tailwindcss-install = "npm install -g tailwindcss@latest";
-    # tailwindcss-v4beta-install = "npm install -g tailwindcss@next @tailwindcss/cli@next";
-    cargo-leptos-install = "cargo install cargo-leptos --locked";
-    worker-build-install = "cargo install worker-build";
+    # Commands to execute when the workspace is created and opened for the first time.
+    workspace.onCreate = {
+      rust-install = "rustup default nightly; rustup target add wasm32-unknown-unknown";
+      wrangler = "npm install -g npm@latest && npm install -g wrangler@latest";
+      # tailwindcss-install = "npm install -g tailwindcss@latest";
+      # tailwindcss-v4beta-install = "npm install -g tailwindcss@next @tailwindcss/cli@next";
+      cargo-install = "cargo install cargo-leptos && cargo install worker-build";
+    };
   };
 }
