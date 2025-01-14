@@ -1,10 +1,12 @@
+#![allow(non_snake_case)]
+
 #[cfg(feature = "ssr")]
 use worker::*;
-#[cfg(feature = "hydrate")]
-use leptos::wasm_bindgen;
+use crate::app::*;
 
 pub mod app;
-use crate::app::App;
+pub mod components;
+pub mod pages;
 
 #[cfg(feature = "ssr")]
 async fn router(env: Env) -> axum::Router {
@@ -12,7 +14,6 @@ async fn router(env: Env) -> axum::Router {
     use leptos::prelude::*;
     use leptos_axum::{generate_route_list, LeptosRoutes};
     use std::sync::Arc;
-    use crate::app::shell;
 
     let conf = get_configuration(None).unwrap();
     let leptos_options = conf.leptos_options;
@@ -44,7 +45,6 @@ async fn fetch(
 #[cfg(feature = "hydrate")]
 #[wasm_bindgen::prelude::wasm_bindgen]
 pub fn hydrate() {
-    _ = console_log::init_with_level(log::Level::Debug);
     console_error_panic_hook::set_once();
     leptos::mount::hydrate_body(App);
 }
