@@ -39,46 +39,21 @@ strip = true
 codegen-units = 1
 
 [package.metadata.leptos]
-# The name used by wasm-bindgen/cargo-leptos for the JS/WASM bundle.
+# Compilation parameters. https://github.com/leptos-rs/cargo-leptos#compilation-parameters
+bin-features = ["ssr"]
+bin-default-features = false
+lib-features = ["hydrate"]
+lib-default-features = false
+
+# Site parameters. https://github.com/leptos-rs/cargo-leptos#site-parameters
 output-name = "portfolio_app"
-
-# The site root folder is where cargo-leptos generate all output. 
-# WARNING: all content of this folder will be erased on a rebuild.
 site-root = "target/site"
-
-# The site-root relative folder where all compiled output (JS, WASM and CSS) is written
 site-pkg-dir = "pkg"
-
-# Assets source dir. All files found here will be copied and synchronized to site-root.
-# The assets-dir cannot have a sub directory with the same name/path as site-pkg-dir.
-# Env: LEPTOS_ASSETS_DIR.
-assets-dir = "public"
-
-# The IP and port where the server serves the content.
-site-addr = "127.0.0.1:8787"
-
-# The port to use for automatic reload monitoring
-reload-port = 3001
-
-#  The browserlist query used for optimizing the CSS.
+style-file = "style/output.css"
 browserquery = "defaults"
-
-# Set by cargo-leptos watch when building with that tool. Controls whether autoreload JS will be included in the head
-watch = false
+assets-dir = "assets"
+site-addr = "127.0.0.1:8787"
+reload-port = 3001
 
 # The environment Leptos will run in, usually either "DEV" or "PROD"
 env = "DEV"
-
-# The features to use when compiling the bin target
-# Can be over-ridden with the command line parameter --bin-features
-bin-features = ["ssr"]
-
-# If the --no-default-features flag should be used when compiling the bin target
-bin-default-features = false
-
-# The features to use when compiling the lib target
-# Can be over-ridden with the command line parameter --lib-features
-lib-features = ["hydrate"]
-
-# If the --no-default-features flag should be used when compiling the lib target
-lib-default-features = false
