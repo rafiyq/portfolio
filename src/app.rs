@@ -31,7 +31,7 @@ pub fn App() -> impl IntoView {
     view! {
         // injects a stylesheet into the document <head>
         // id=leptos means cargo-leptos will hot-reload this stylesheet
-        <Stylesheet id="leptos" href="/pkg/portfolio.css"/>
+        <Stylesheet id="leptos" href="/pkg/portfolio_app.css"/>
 
         // sets the document title
         <Title text="Portfolio App"/>

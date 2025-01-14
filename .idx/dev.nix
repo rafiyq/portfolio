@@ -16,7 +16,10 @@
   # Sets environment variables in the workspace
   env = {
     RUSTUP_HOME = "$HOME/.rustup";
-    PATH = ["$HOME/.cargo/bin"];
+    PATH = [
+      "$HOME/.cargo/bin"
+      "$HOME/.local/bin"
+    ];
   };
 
   # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
@@ -33,9 +36,12 @@
     workspace.onCreate = {
       rust-install = "rustup default nightly; rustup target add wasm32-unknown-unknown";
       wrangler = "npm install -g npm@latest && npm install -g wrangler@latest";
-      # tailwindcss-install = "npm install -g tailwindcss@latest";
-      # tailwindcss-v4beta-install = "npm install -g tailwindcss@next @tailwindcss/cli@next";
       cargo-install = "cargo install cargo-leptos && cargo install worker-build";
+      tailwindcss-v4 = ''
+        mkdir -p $HOME/.local/bin &&\
+        wget https://github.com/tailwindlabs/tailwindcss/releases/download/v4.0.0-beta.9/tailwindcss-linux-x64 -O $HOME/.local/bin/tailwindcss && \
+        chmod +x $HOME/.local/bin/tailwindcss \
+      '';
     };
   };
 }
