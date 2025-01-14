@@ -18,11 +18,10 @@ leptos_router = { version = "0.7", features = ["nightly"] }
 log = "0.4"
 tower-service = "0.3"
 wasm-bindgen = "=0.2.99"
-wasm-bindgen-futures = "0.4"
 worker = { version= "0.5", features = ['http', 'axum', 'd1'], optional = true }
 
 [features]
-hydrate = ["dep:console_log", "leptos/hydrate"]
+hydrate = [ "leptos/hydrate"]
 ssr = [ 
   "dep:axum",
   "dep:leptos_axum",
